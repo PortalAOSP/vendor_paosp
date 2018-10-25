@@ -5,10 +5,12 @@ Officially Supported Devices:
 | Device                            | Codename                                                                           | Maintainer                                                | 
 | :-------------------------------: | :--------------------------------------------------------------------------------: | :-------------------------------------------------------: | 
 | Generic System Image (GSI)        | [phh_treble]                                                                       | [mattroot](https://github.com/mattroot)                   |
+| OnePlus 3                        | [oneplus3]                                                                         | [RadekBledowski](https://github.com/radekbledowski)                       |
+| OnePlus 5T                        | [dumpling]                                                                         | [p8tgames](https://github.com/p8tgames)                       |
 | Xiaomi Redmi 5 Plus | [vince] | [4PERTURE](https://github.com/4PERTURE) |
 | Xiaomi Redmi Note 4               | [mido](https://github.com/pornypie/android_device_xiaomi_mido)                     | [JavAster](https://github.com/JavAster)                   |
 | Xiaomi Redmi Note 5               | [whyred](https://github.com/pornypie/android_device_xiaomi_whyred)                 | [edi194](https://github.com/edi184)                       |
-| OnePlus 5t                        | [dumpling]                                                                         | [p8tgames](https://github.com/p8tgames)                       |
+
 
 <!-- Note for maintainers: add your devices in alphabetical order by the "Device" column, not "Codename" -->
 Soon to be officially supported devices:
