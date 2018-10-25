@@ -4,19 +4,19 @@ OTA_TYPE=Amateur
 endif
 
 # Make sure the uppercase is used
-ifeq ($(OTA_TYPE),experimental)
-OTA_TYPE=Experimental
+ifeq ($(OTA_TYPE),teen)
+OTA_TYPE=Teen
 endif
-ifeq ($(OTA_TYPE),official)
-OTA_TYPE=Official
+ifeq ($(OTA_TYPE),professional)
+OTA_TYPE=Professional
 endif
 
 # PornAOSP OTA app
 PRODUCT_PACKAGES += \
-    PornOTA
+   PornOTA
 
 # PornAOSP version
-PAOSP_VERSION := PAOSP-Pie-$(shell date +"%y%m%d")-$(OTA_TYPE)
+PAOSP_VERSION := PAOSP-creamPie-$(shell date +"%y%m%d")-$(OTA_TYPE)
 DEVICE := $(subst paosp_,,$(TARGET_PRODUCT))
 
 
