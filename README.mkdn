@@ -5,7 +5,7 @@ Officially Supported Devices:
 | Device                            | Codename                                                                           | Maintainer                                                | 
 | :-------------------------------: | :--------------------------------------------------------------------------------: | :-------------------------------------------------------: | 
 | Generic System Image (GSI)        | [phh_treble]                                                                       | [mattroot](https://github.com/mattroot)                   |
-| OnePlus 3                        | [oneplus3]                                                                         | [RadekBledowski](https://github.com/radekbledowski)                       |
+| OnePlus 3                        | [oneplus3](https://github.com/pornypie/device_oneplus_oneplus3)                   | [RadekBledowski](https://github.com/radekbledowski)                       |
 | OnePlus 5T                        | [dumpling]                                                                         | [p8tgames](https://github.com/p8tgames)                       |
 | Xiaomi Redmi 5 Plus | [vince] | [4PERTURE](https://github.com/4PERTURE) |
 | Xiaomi Redmi Note 4               | [mido](https://github.com/pornypie/android_device_xiaomi_mido)                     | [JavAster](https://github.com/JavAster)                   |
