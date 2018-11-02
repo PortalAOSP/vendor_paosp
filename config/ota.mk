@@ -12,7 +12,7 @@ OTA_TYPE=Professional
 endif
 
 # PornAOSP version
-PAOSP_VERSION := PAOSP-creamPie-$(shell date +"%y%m%d")-$(OTA_TYPE)
+PAOSP_VERSION := PAOSP_creamPie-$(shell date +"%y%m%d")-$(OTA_TYPE)
 DEVICE := $(subst paosp_,,$(TARGET_PRODUCT))
 
 ifneq ($(OTA_TYPE),Amateur)
