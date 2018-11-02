@@ -11,14 +11,14 @@ ifeq ($(OTA_TYPE),professional)
 OTA_TYPE=Professional
 endif
 
-# PornAOSP OTA app
-PRODUCT_PACKAGES += \
-   PornOTA
-
-# PornAOSP version
+# XenonHD version
 PAOSP_VERSION := PAOSP-creamPie-$(shell date +"%y%m%d")-$(OTA_TYPE)
 DEVICE := $(subst paosp_,,$(TARGET_PRODUCT))
 
+ifneq ($(OTA_TYPE),Amateur)
+# PAOSP OTA app
+PRODUCT_PACKAGES += \
+    PornOTA
 
 # OTA Configuration
 $(shell echo -e "OTA_Configuration\n \
@@ -29,3 +29,4 @@ version_source=ro.paosp.version\n \
 version_delimiter=-\n \
 version_position=1\n \
 version_format=yyMMdd" > $(OTA_DIR)/ota_conf)
+endif
