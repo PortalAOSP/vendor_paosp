@@ -11,7 +11,7 @@ ifeq ($(OTA_TYPE),professional)
 OTA_TYPE=Professional
 endif
 
-# XenonHD version
+# PornAOSP version
 PAOSP_VERSION := PAOSP-creamPie-$(shell date +"%y%m%d")-$(OTA_TYPE)
 DEVICE := $(subst paosp_,,$(TARGET_PRODUCT))
 
