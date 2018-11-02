@@ -152,7 +152,7 @@ PRODUCT_PACKAGES += \
     LineageSetupWizard \
     Eleven \
     ExactCalculator \
-    Jelly \
+    Focus \
     GBoard \
     Lawnchair \
     LockClock \
