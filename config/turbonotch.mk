@@ -4,4 +4,4 @@
 
 PRODUCT_PACKAGES += \
     DisplayCutoutEmulationTurboTallOverlay \
-    DisplayCutoutEmulationTurboDouble
+    DisplayCutoutEmulationTurboDoubleOverlay
