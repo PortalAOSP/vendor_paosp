@@ -156,6 +156,7 @@ PRODUCT_PACKAGES += \
     GBoard \
     Lawnchair \
     LockClock \
+    PinkPipe \
     WallpaperPicker \
     WeatherProvider
 
