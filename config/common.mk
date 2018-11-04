@@ -154,6 +154,7 @@ PRODUCT_PACKAGES += \
     ExactCalculator \
     Focus \
     GBoard \
+    Gallery \
     Lawnchair \
     LockClock \
     PinkPipe \
