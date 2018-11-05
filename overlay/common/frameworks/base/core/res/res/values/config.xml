@@ -96,4 +96,8 @@
 
     <!-- Flag indicating whether we should enable smart battery. -->
     <bool name="config_smart_battery_available">true</bool>
+	
+	<bool name="config_useDarkBgNotificationIconTextTinting">true</bool>
+    <bool name="config_useDarkBgNotificationTinting_override">true</bool>
+    <bool name="config_notificationTinting_override">true</bool>
 </resources>
