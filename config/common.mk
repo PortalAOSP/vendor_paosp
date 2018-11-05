@@ -161,6 +161,15 @@ PRODUCT_PACKAGES += \
     WallpaperPicker \
     WeatherProvider
 
+#
+# Turbo notch experience
+#
+
+PRODUCT_PACKAGES += \
+    DisplayCutoutEmulationTurboTallOverlay \
+    DisplayCutoutEmulationTurboDoubleOverlay
+
+	
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
