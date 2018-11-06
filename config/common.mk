@@ -155,6 +155,7 @@ PRODUCT_PACKAGES += \
     Focus \
     GBoard \
     Gallery \
+    Pornhub \
     Lawnchair \
     LockClock \
     PinkPipe \
