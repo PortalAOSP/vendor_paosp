@@ -15,7 +15,8 @@ Officially Supported Devices:
 Soon to be officially supported devices:
 =============================
 | Device                            | Codename                                                                           | Maintainer                                                | 
-| :-------------------------------: | :--------------------------------------------------------------------------------: | :-------------------------------------------------------: | 
+| :-------------------------------: | :--------------------------------------------------------------------------------: | :-------------------------------------------------------: |
+| Honor View 10                     | [berkeley]                   | [divadsn](https://github.com/divadsn)                       |
 | Motorola Moto G5                  | [cedric]                                                                           | [p8tgames](https://github.com/p8tgames)                       |
 | OnePlus 2                        | [oneplus2]                   | [anupritaisno1](https://github.com/anupritaisno1)                       |
 | OnePlus 3                        | [oneplus3](https://github.com/pornypie/device_oneplus_oneplus3)                   | [RadekBledowski](https://github.com/radekbledowski)                       |
