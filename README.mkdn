@@ -4,8 +4,7 @@ Officially Supported Devices:
 
 | Device                            | Codename                                                                           | Maintainer                                                | 
 | :-------------------------------: | :--------------------------------------------------------------------------------: | :-------------------------------------------------------: | 
-| Generic System Image (GSI)        | [phh_treble]                                                                       | [mattroot](https://github.com/mattroot)                   |
-| OnePlus 3                        | [oneplus3](https://github.com/pornypie/device_oneplus_oneplus3)                   | [RadekBledowski](https://github.com/radekbledowski)                       |
+| Generic System Image (GSI)        | [phh_treble](https://github.com/pornypie/device_phh_treble)                                                                       | [mattroot](https://github.com/mattroot)                   |
 | OnePlus 5T                        | [dumpling](https://github.com/pornypie/android_device_oneplus_dumpling)                                                                         | [p8tgames](https://github.com/p8tgames)                       |
 | Xiaomi Redmi 5 Plus | [vince] | [4PERTURE](https://github.com/4PERTURE) |
 | Xiaomi Redmi Note 4               | [mido](https://github.com/pornypie/android_device_xiaomi_mido)                     | [JavAster](https://github.com/JavAster)                   |
@@ -18,3 +17,8 @@ Soon to be officially supported devices:
 | Device                            | Codename                                                                           | Maintainer                                                | 
 | :-------------------------------: | :--------------------------------------------------------------------------------: | :-------------------------------------------------------: | 
 | Motorola Moto G5                  | [cedric]                                                                           | [p8tgames](https://github.com/p8tgames)                       |
+| OnePlus 2                        | [oneplus2]                   | [anupritaisno1](https://github.com/anupritaisno1)                       |
+| OnePlus 3                        | [oneplus3](https://github.com/pornypie/device_oneplus_oneplus3)                   | [RadekBledowski](https://github.com/radekbledowski)                       |
+| OnePlus 6                        | [enchilada]                  | [dadi11](https://github.com/dadi11)                       |
+| Xiaomi MI 4                       | [cancro]                                                                           | [mattroot](https://github.com/mattroot)                   |
+| Xiaomi MI 5S                      | [capricorn]                                                                        | [TadiT7](https://github.com/TadiT7)                   |
