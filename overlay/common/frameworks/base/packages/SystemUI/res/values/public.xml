@@ -2,9 +2,7 @@
 <resources>
     <public type="layout" name="notification_snooze" id="0x7f020000" />
     <public type="layout" name="notification_snooze_option" id="0x7f020001" />
-    <public type="color" name="navigation_bar_background_opaque" id="0x7f030000" />
     <public type="color" name="notification_gear_color" id="0x7f030001" />
-    <public type="color" name="notification_header_bg" id="0x7f030002" />
     <public type="color" name="notification_legacy_background_color" id="0x7f030003" />
     <public type="color" name="notification_material_background_color" id="0x7f030004" />
     <public type="color" name="notification_material_background_dimmed_color" id="0x7f030005" />
@@ -12,7 +10,6 @@
     <public type="color" name="notification_shade_background_color" id="0x7f030007" />
     <public type="color" name="notification_material_background_low_priority_color" id="0x7f030008" />
     <public type="color" name="notification_guts_bg_color" id="0x7f030009" />
-    <public type="color" name="system_accent_color" id="0x7f03000a" />
     <public type="color" name="system_bar_background_opaque" id="0x7f03000b" />
     <public type="color" name="system_primary_color" id="0x7f03000c" />
     <public type="color" name="system_secondary_color" id="0x7f03000d" />
