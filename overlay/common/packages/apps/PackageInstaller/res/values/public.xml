@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="color" name="grant_permissions_app_color" id="0x7f020000" />
+    <public type="color" name="grant_permissions_progress_color" id="0x7f020001" />
+    <public type="style" name="Theme.DialogWhenLarge" id="0x7f030000" />
+    <public type="style" name="Theme.AlertDialogActivity" id="0x7f030001" />
+    <public type="style" name="Theme.Header.Settings" id="0x7f030002" />
+    <public type="style" name="Settings" id="0x7f030003" />
+    <public type="style" name="Settings.NoActionBar" id="0x7f030004" />
+    <public type="style" name="GrantPermissions" id="0x7f030005" />
+    <public type="style" name="Platform.V21.AppCompat.Light" id="0x7f030006" />
+    <public type="style" name="Platform.V25.AppCompat.Light" id="0x7f030007" />
+</resources>
