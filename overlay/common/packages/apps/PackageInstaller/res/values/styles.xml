@@ -14,7 +14,5 @@
     </style>
     <style name="GrantPermissions" parent="@android:style/Theme.Material.Dialog.NoActionBar">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowFixedHeightMajor">100.0%</item>
-        <item name="android:windowFixedHeightMinor">100.0%</item>
     </style>
 </resources>
