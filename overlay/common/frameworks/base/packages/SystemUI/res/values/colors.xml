@@ -16,6 +16,7 @@
 -->
 <resources>
 
+    <drawable name="notification_number_text_color">#ff000000</drawable>
     <color name="zen_introduction">#ff000000</color>
     <color name="zen_qs_panel_close_button_color">@android:color/black</color>
 
@@ -40,5 +41,6 @@
     <color name="notification_material_background_color">@android:color/black</color>
     <color name="notification_action_list">@android:color/black</color>
     <color name="notification_action_list_dark">@android:color/black</color>
-	
+	<color name="notification_ripple_untinted_color">#28ffffff</color>
+	<color name="smart_reply_button_text_dark_bg">#ffffffff</color>
 </resources>
