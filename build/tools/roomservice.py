@@ -111,7 +111,7 @@ def indent(elem, level=0):
             elem.tail = i
 
 def get_default_revision():
-    r = ('p')
+    r = ('teen')
     return r.replace('refs/heads/', '').replace('refs/tags/', '')
 
 def get_from_manifest(devicename):
