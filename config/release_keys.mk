@@ -1,10 +1,10 @@
 # Whether using or not release-keys for building
 # Copyright (C) 2018 KudProject Development
-# Copyright (C) 2018 XenonHD Project
+# Copyright (C) 2018 PornAOSP Project
 # SPDX-License-Identifier: Apache-2.0
 
 # Don't modify; path where release-keys are hosted
-RELEASE_KEYS_PATH := vendor/xenonhd/keys
+RELEASE_KEYS_PATH := vendor/paosp/keys
 
 # Make sure we're building Official
 ifneq ($(filter Experimental Official,$(OTA_TYPE)),)

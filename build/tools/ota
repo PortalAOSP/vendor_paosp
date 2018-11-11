@@ -1,26 +1,26 @@
 #!/bin/bash
 # PornAOSP OTA
 
-DEVICE=`grep ro.xenonhd.device $OUT/*/build.prop | cut -d'=' -f2`
-TYPE=`grep ro.xenonhd.type $OUT/*/build.prop | cut -d'=' -f2`
-VERSION=`grep ro.xenonhd.version $OUT/*/build.prop | cut -d'=' -f2`
+DEVICE=`grep ro.paosp.device $OUT/*/build.prop | cut -d'=' -f2`
+TYPE=`grep ro.paosp.type $OUT/*/build.prop | cut -d'=' -f2`
+VERSION=`grep ro.paosp.version $OUT/*/build.prop | cut -d'=' -f2`
 
 OTA=${OTA_TYPE,,}
 TITLE=$DEVICE\_$OTA
 
-XENONHD_TARGET_PACKAGE=$VERSION-$DEVICE.zip
+PAOSP_TARGET_PACKAGE=$VERSION-$DEVICE.zip
 
 # Create OTA XML file
 if [ -f $OTA_DIR/ota_conf ] &>/dev/null; then
 
 cat >$OUT/ota_$TITLE.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
-<XenonOTA>
+<PornOTA>
     <Pie>
         <$DEVICE>
             <Filename>$VERSION</Filename>
-            <RomUrl>https://mirrors.c0urier.net/android/teamhorizon/P/$TYPE/$DEVICE/$XENONHD_TARGET_PACKAGE</RomUrl>
-            <MD5Url>https://mirrors.c0urier.net/android/teamhorizon/P/$TYPE/$DEVICE/$XENONHD_TARGET_PACKAGE.md5sum</MD5Url>
+            <RomUrl>https://mirrors.c0urier.net/android/teamhorizon/P/$TYPE/$DEVICE/$PAOSP_TARGET_PACKAGE</RomUrl>
+            <MD5Url>https://mirrors.c0urier.net/android/teamhorizon/P/$TYPE/$DEVICE/$PAOSP_TARGET_PACKAGE.md5sum</MD5Url>
             <ChangelogUrl>https://mirrors.c0urier.net/android/teamhorizon/P/$TYPE/$DEVICE/Changelog.txt</ChangelogUrl>
         </$DEVICE>
     </Pie>
