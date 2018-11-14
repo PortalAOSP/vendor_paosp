@@ -164,7 +164,8 @@ PRODUCT_PACKAGES += \
     LockClock \
     PinkPipe \
     WallpaperPicker \
-    WeatherProvider
+    WeatherProvider \
+    OPWeather
 
 #
 # Turbo notch experience
