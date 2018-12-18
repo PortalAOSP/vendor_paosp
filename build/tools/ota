@@ -16,7 +16,7 @@ if [ -f $OTA_DIR/ota_conf ] &>/dev/null; then
 
 cat >$OUT/ota_$TITLE.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
-<XenonOTA>
+<PornOTA>
     <Pie>
         <$DEVICE>
             <Filename>$VERSION</Filename>
@@ -26,6 +26,6 @@ cat >$OUT/ota_$TITLE.xml <<EOF
             <ChangelogUrl>https://mirrors.c0urier.net/android/teamhorizon/P/$TYPE/$DEVICE/Changelog.txt</ChangelogUrl>
         </$DEVICE>
     </Pie>
-</XenonOTA>
+</PornOTA>
 EOF
 fi
