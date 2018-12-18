@@ -1,13 +1,13 @@
 # Permissions for lineage sdk services
 PRODUCT_COPY_FILES += \
-    vendor/xenonhd/config/permissions/org.lineageos.audio.xml:system/etc/permissions/org.lineageos.audio.xml \
-    vendor/xenonhd/config/permissions/org.lineageos.livedisplay.xml:system/etc/permissions/org.lineageos.livedisplay.xml \
-    vendor/xenonhd/config/permissions/org.lineageos.performance.xml:system/etc/permissions/org.lineageos.performance.xml \
-    vendor/xenonhd/config/permissions/org.lineageos.profiles.xml:system/etc/permissions/org.lineageos.profiles.xml \
-    vendor/xenonhd/config/permissions/org.lineageos.settings.xml:system/etc/permissions/org.lineageos.settings.xml \
-    vendor/xenonhd/config/permissions/org.lineageos.style.xml:system/etc/permissions/org.lineageos.style.xml \
-    vendor/xenonhd/config/permissions/org.lineageos.trust.xml:system/etc/permissions/org.lineageos.trust.xml \
-    vendor/xenonhd/config/permissions/org.lineageos.weather.xml:system/etc/permissions/org.lineageos.weather.xml
+    vendor/paosp/config/permissions/org.lineageos.audio.xml:system/etc/permissions/org.lineageos.audio.xml \
+    vendor/paosp/config/permissions/org.lineageos.livedisplay.xml:system/etc/permissions/org.lineageos.livedisplay.xml \
+    vendor/paosp/config/permissions/org.lineageos.performance.xml:system/etc/permissions/org.lineageos.performance.xml \
+    vendor/paosp/config/permissions/org.lineageos.profiles.xml:system/etc/permissions/org.lineageos.profiles.xml \
+    vendor/paosp/config/permissions/org.lineageos.settings.xml:system/etc/permissions/org.lineageos.settings.xml \
+    vendor/paosp/config/permissions/org.lineageos.style.xml:system/etc/permissions/org.lineageos.style.xml \
+    vendor/paosp/config/permissions/org.lineageos.trust.xml:system/etc/permissions/org.lineageos.trust.xml \
+    vendor/paosp/config/permissions/org.lineageos.weather.xml:system/etc/permissions/org.lineageos.weather.xml
 
 # Lineage Platform Library
 PRODUCT_PACKAGES += \

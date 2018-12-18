@@ -15,6 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/xenonhd_arm.mk \
-    $(LOCAL_DIR)/xenonhd_arm64.mk \
-    $(LOCAL_DIR)/xenonhd_x86.mk
+    $(LOCAL_DIR)/paosp_arm.mk \
+    $(LOCAL_DIR)/paosp_arm64.mk \
+    $(LOCAL_DIR)/paosp_x86.mk

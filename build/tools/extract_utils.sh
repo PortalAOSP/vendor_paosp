@@ -44,7 +44,7 @@ trap cleanup 0
 #
 # $1: device name
 # $2: vendor name
-# $3: XenonHD root directory
+# $3: PornAOSP root directory
 # $4: is common device - optional, default to false
 # $5: cleanup - optional, default to true
 # $6: custom vendor makefile name - optional, default to false
@@ -545,16 +545,16 @@ function write_header() {
             printf "# Copyright (C) 2016 The CyanogenMod Project\n" > $1
         fi
         if [ $YEAR -eq 2017 ]; then
-            printf "# Copyright (C) 2017 The XenonHD Project\n" >> $1
+            printf "# Copyright (C) 2017 The PornAOSP Project\n" >> $1
         elif [ $INITIAL_COPYRIGHT_YEAR -eq $YEAR ]; then
-            printf "# Copyright (C) $YEAR The XenonHD Project\n" >> $1
+            printf "# Copyright (C) $YEAR The PornAOSP Project\n" >> $1
         elif [ $INITIAL_COPYRIGHT_YEAR -le 2017 ]; then
-            printf "# Copyright (C) 2017-$YEAR The XenonHD Project\n" >> $1
+            printf "# Copyright (C) 2017-$YEAR The PornAOSP Project\n" >> $1
         else
-            printf "# Copyright (C) $INITIAL_COPYRIGHT_YEAR-$YEAR The XenonHD Project\n" >> $1
+            printf "# Copyright (C) $INITIAL_COPYRIGHT_YEAR-$YEAR The PornAOSP Project\n" >> $1
         fi
     else
-        printf "# Copyright (C) $YEAR The XenonHD Project\n" > $1
+        printf "# Copyright (C) $YEAR The PornAOSP Project\n" > $1
     fi
 
     cat << EOF >> $1
@@ -779,12 +779,12 @@ function oat2dex() {
     local HOST="$(uname)"
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$XENONHD_ROOT"/vendor/xenonhd/build/tools/smali/baksmali.jar
-        export SMALIJAR="$XENONHD_ROOT"/vendor/xenonhd/build/tools/smali/smali.jar
+        export BAKSMALIJAR="$XENONHD_ROOT"/vendor/paosp/build/tools/smali/baksmali.jar
+        export SMALIJAR="$XENONHD_ROOT"/vendor/paosp/build/tools/smali/smali.jar
     fi
 
     if [ -z "$VDEXEXTRACTOR" ]; then
-        export VDEXEXTRACTOR="$LINEAGE_ROOT"/vendor/xenonhd/build/tools/"$HOST"/vdexExtractor
+        export VDEXEXTRACTOR="$LINEAGE_ROOT"/vendor/paosp/build/tools/"$HOST"/vdexExtractor
     fi
 
     if [ -z "$CDEXCONVERTER" ]; then
@@ -965,7 +965,7 @@ function extract() {
             # If OTA is block based, extract it.
             elif [ -a "$DUMPDIR"/system.new.dat ]; then
                 echo "Converting system.new.dat to system.img"
-                python "$XENONHD_ROOT"/vendor/xenonhd/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
+                python "$XENONHD_ROOT"/vendor/paosp/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
                 rm -rf "$DUMPDIR"/system.new.dat "$DUMPDIR"/system
                 mkdir "$DUMPDIR"/system "$DUMPDIR"/tmp
                 echo "Requesting sudo access to mount the system.img"
@@ -1051,7 +1051,7 @@ function extract() {
             printf '    + (keeping pinned file with hash %s)\n' "$HASH"
         else
             FOUND=false
-            # Try XenonHD target first.
+            # Try PornAOSP target first.
             # Also try to search for files stripped of
             # the "/system" prefix, if we're actually extracting
             # from a system image.

@@ -1,1 +1,1 @@
-add_lunch_combo xenonhd_huashan-userdebug
+add_lunch_combo paosp_huashan-userdebug

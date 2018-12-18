@@ -1,10 +1,10 @@
 #!/bin/bash
-# XenonHD OTA
+# PornAOSP OTA
 
-DEVICE=`grep ro.xenonhd.device $OUT/*/build.prop | cut -d'=' -f2`
-TYPE=`grep ro.xenonhd.type $OUT/*/build.prop | cut -d'=' -f2`
-VERSION=`grep ro.xenonhd.version $OUT/*/build.prop | cut -d'=' -f2`
-TIME=`grep ro.xenonhd.timestamp $OUT/*/build.prop | cut -d'=' -f2`
+DEVICE=`grep ro.paosp.device $OUT/*/build.prop | cut -d'=' -f2`
+TYPE=`grep ro.paosp.type $OUT/*/build.prop | cut -d'=' -f2`
+VERSION=`grep ro.paosp.version $OUT/*/build.prop | cut -d'=' -f2`
+TIME=`grep ro.paosp.timestamp $OUT/*/build.prop | cut -d'=' -f2`
 
 OTA=${OTA_TYPE,,}
 TITLE=$DEVICE\_$OTA

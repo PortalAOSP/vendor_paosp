@@ -1,16 +1,16 @@
-function __print_xenonhd_functions_help() {
+function __print_paosp_functions_help() {
 cat <<EOF
-Additional XenonHD functions:
+Additional PornAOSP functions:
 - cout:            Changes directory to out.
 - mmp:             Builds all of the modules in the current directory and pushes them to the device.
 - mmap:            Builds all of the modules in the current directory and its dependencies, then pushes the package to the device.
 - mmmp:            Builds all of the modules in the supplied directories and pushes them to the device.
-- xenonhdgerrit:   A Git wrapper that fetches/pushes patch from/to XenonHD Gerrit Review.
-- xenonhdrebase:   Rebase a Gerrit change and push it again.
-- xenonhdremote:   Add git remote for XenonHD Gerrit Review.
+- paospgerrit:   A Git wrapper that fetches/pushes patch from/to PornAOSP Gerrit Review.
+- paosprebase:   Rebase a Gerrit change and push it again.
+- paospremote:   Add git remote for PornAOSP Gerrit Review.
 - aospremote:      Add git remote for matching AOSP repository.
 - cafremote:       Add git remote for matching CodeAurora repository.
-- githubremote:    Add git remote for XenonHD Github.
+- githubremote:    Add git remote for PornAOSP Github.
 - mka:             Builds using SCHED_BATCH on all processors.
 - mkap:            Builds the module(s) using mka and pushes them to the device.
 - cmka:            Cleans and builds using mka.
@@ -71,7 +71,7 @@ function breakfast()
     XENONHD_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
-    for f in `/bin/ls vendor/xenonhd/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/paosp/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
@@ -87,12 +87,12 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
-            # This is probably just the XenonHD model name
+            # This is probably just the PornAOSP model name
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
 
-            lunch xenonhd_$target-$variant
+            lunch paosp_$target-$variant
         fi
     fi
     return $?
@@ -117,7 +117,7 @@ function eat()
             done
             echo "Device Found.."
         fi
-        if (adb shell getprop ro.xenonhd.device | grep -q "$XENONHD_BUILD"); then
+        if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD"); then
             # if adbd isn't root we can't write to /cache/recovery/
             adb root
             sleep 1
@@ -257,14 +257,14 @@ function dddclient()
    fi
 }
 
-function xenonhdremote()
+function paospremote()
 {
     if ! git rev-parse --git-dir &> /dev/null
     then
         echo ".git directory not found. Please run this from the root directory of the Android repository you wish to set up."
         return 1
     fi
-    git remote rm xenonhd 2> /dev/null
+    git remote rm paosp 2> /dev/null
     local REMOTE=$(git config --get remote.github.projectname)
     local XENONHD="true"
     if [ -z "$REMOTE" ]
@@ -286,14 +286,14 @@ function xenonhdremote()
         local PROJECT=$REMOTE
     fi
 
-    local XENONHD_USER=$(git config --get review.gerrit.xenonhd.com.username)
+    local XENONHD_USER=$(git config --get review.gerrit.paosp.com.username)
     if [ -z "$XENONHD_USER" ]
     then
-        git remote add xenonhd ssh://gerrit.xenonhd.com:29418/$PFX$PROJECT
+        git remote add paosp ssh://gerrit.paosp.com:29418/$PFX$PROJECT
     else
-        git remote add xenonhd ssh://$XENONHD_USER@gerrit.xenonhd.com:29418/$PFX$PROJECT
+        git remote add paosp ssh://$XENONHD_USER@gerrit.paosp.com:29418/$PFX$PROJECT
     fi
-    echo "Remote 'xenonhd' created"
+    echo "Remote 'paosp' created"
 }
 
 function aospremote()
@@ -395,7 +395,7 @@ function installboot()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 > /dev/null
     adb wait-for-online remount
-    if (adb shell getprop ro.xenonhd.device | grep -q "$XENONHD_BUILD");
+    if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD");
     then
         adb push $OUT/boot.img /cache/
         if [ -e "$OUT/system/lib/modules/*" ];
@@ -444,7 +444,7 @@ function installrecovery()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 >> /dev/null
     adb wait-for-online remount
-    if (adb shell getprop ro.xenonhd.device | grep -q "$XENONHD_BUILD");
+    if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD");
     then
         adb push $OUT/recovery.img /cache/
         adb shell dd if=/cache/recovery.img of=$PARTITION
@@ -471,13 +471,13 @@ function makerecipe() {
     if [ "$REPO_REMOTE" = "github" ]
     then
         pwd
-        xenonhdremote
-        git push xenonhd HEAD:refs/heads/'$1'
+        paospremote
+        git push paosp HEAD:refs/heads/'$1'
     fi
     '
 }
 
-function xenonhdgerrit() {
+function paospgerrit() {
     if [ "$(__detect_shell)" = "zsh" ]; then
         # zsh does not define FUNCNAME, derive from funcstack
         local FUNCNAME=$funcstack[1]
@@ -487,7 +487,7 @@ function xenonhdgerrit() {
         $FUNCNAME help
         return 1
     fi
-    local user=`git config --get review.gerrit.xenonhd.com.username`
+    local user=`git config --get review.gerrit.paosp.com.username`
     local review=`git config --get remote.github.review`
     local project=`git config --get remote.github.projectname`
     local command=$1
@@ -523,7 +523,7 @@ EOF
             case $1 in
                 __cmg_*) echo "For internal use only." ;;
                 changes|for)
-                    if [ "$FUNCNAME" = "xenonhdgerrit" ]; then
+                    if [ "$FUNCNAME" = "paospgerrit" ]; then
                         echo "'$FUNCNAME $1' is deprecated."
                     fi
                     ;;
@@ -616,7 +616,7 @@ EOF
                 $local_branch:refs/for/$remote_branch || return 1
             ;;
         changes|for)
-            if [ "$FUNCNAME" = "xenonhdgerrit" ]; then
+            if [ "$FUNCNAME" = "paospgerrit" ]; then
                 echo >&2 "'$FUNCNAME $command' is deprecated."
             fi
             ;;
@@ -715,15 +715,15 @@ EOF
     esac
 }
 
-function xenonhdrebase() {
+function paosprebase() {
     local repo=$1
     local refs=$2
     local pwd="$(pwd)"
     local dir="$(gettop)/$repo"
 
     if [ -z $repo ] || [ -z $refs ]; then
-        echo "XenonHD Gerrit Rebase Usage: "
-        echo "      xenonhdrebase <path to project> <patch IDs on Gerrit>"
+        echo "PornAOSP Gerrit Rebase Usage: "
+        echo "      paosprebase <path to project> <patch IDs on Gerrit>"
         echo "      The patch IDs appear on the Gerrit commands that are offered."
         echo "      They consist on a series of numbers and slashes, after the text"
         echo "      refs/changes. For example, the ID in the following command is 26/8126/2"
@@ -744,7 +744,7 @@ function xenonhdrebase() {
     echo "Bringing it up to date..."
     repo sync .
     echo "Fetching change..."
-    git fetch "http://gerrit.xenonhd.com/p/$repo" "refs/changes/$refs" && git cherry-pick FETCH_HEAD
+    git fetch "http://gerrit.paosp.com/p/$repo" "refs/changes/$refs" && git cherry-pick FETCH_HEAD
     if [ "$?" != "0" ]; then
         echo "Error cherry-picking. Not uploading!"
         return
@@ -829,7 +829,7 @@ function dopush()
         echo "Device Found."
     fi
 
-    if (adb shell getprop ro.xenonhd.device | grep -q "$XENONHD_BUILD") || [ "$FORCE_PUSH" = "true" ];
+    if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD") || [ "$FORCE_PUSH" = "true" ];
     then
     # retrieve IP and PORT info if we're using a TCP connection
     TCPIPPORT=$(adb devices \
@@ -960,7 +960,7 @@ alias cmkap='dopush cmka'
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/xenonhd/build/tools/repopick.py $@
+    $T/vendor/paosp/build/tools/repopick.py $@
 }
 
 function fixup_common_out_dir() {
@@ -991,7 +991,7 @@ if [ -d $(gettop)/prebuilts/snapdragon-llvm/toolchains ]; then
             export SDCLANG=true
             export SDCLANG_PATH=$(gettop)/prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_4.0/prebuilt/linux-x86_64/bin
             export SDCLANG_PATH_2=$(gettop)/prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_4.0/prebuilt/linux-x86_64/bin
-            export SDCLANG_LTO_DEFS=$(gettop)/vendor/xenonhd/build/core/sdllvm-lto-defs.mk
+            export SDCLANG_LTO_DEFS=$(gettop)/vendor/paosp/build/core/sdllvm-lto-defs.mk
             ;;
     esac
 fi

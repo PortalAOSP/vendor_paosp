@@ -3,10 +3,10 @@ ifeq ($(WITH_LINEAGE_CHARGER),true)
     BOARD_HAL_STATIC_LIBRARIES := libhealthd.lineage
 endif
 
-include vendor/xenonhd/config/BoardConfigKernel.mk
+include vendor/paosp/config/BoardConfigKernel.mk
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-include vendor/xenonhd/config/BoardConfigQcom.mk
+include vendor/paosp/config/BoardConfigQcom.mk
 endif
 
-include vendor/xenonhd/config/BoardConfigSoong.mk
+include vendor/paosp/config/BoardConfigSoong.mk

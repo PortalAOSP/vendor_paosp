@@ -1,6 +1,6 @@
 # Sensitive Phone Numbers list
 PRODUCT_COPY_FILES += \
-    vendor/xenonhd/prebuilt/common/etc/sensitive_pn.xml:system/etc/sensitive_pn.xml
+    vendor/paosp/prebuilt/common/etc/sensitive_pn.xml:system/etc/sensitive_pn.xml
 
 # World APN list
 PRODUCT_PACKAGES += \

@@ -13,11 +13,11 @@
 # limitations under the License.
 
 $(call inherit-product, build/target/product/aosp_arm.mk)
-$(call inherit-product, vendor/xenonhd/config/common.mk)
+$(call inherit-product, vendor/paosp/config/common.mk)
 
 # Allow building otatools
 TARGET_FORCE_OTA_PACKAGE := true
 
 TARGET_USES_64_BIT_BINDER := true
 
-PRODUCT_NAME := xenonhd_arm
+PRODUCT_NAME := paosp_arm

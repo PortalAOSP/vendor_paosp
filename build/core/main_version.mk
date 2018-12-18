@@ -1,8 +1,8 @@
-# XenonHD System Version
+# PornAOSP System Version
 ADDITIONAL_BUILD_PROPERTIES += \
-    ro.xenonhd.version=$(XENONHD_VERSION) \
-    ro.xenonhd.type=$(OTA_TYPE) \
-    ro.xenonhd.timestamp=$(shell date +%s)
+    ro.paosp.version=$(XENONHD_VERSION) \
+    ro.paosp.type=$(OTA_TYPE) \
+    ro.paosp.timestamp=$(shell date +%s)
 
 # LineageOS Platform SDK Version
 ADDITIONAL_BUILD_PROPERTIES += \

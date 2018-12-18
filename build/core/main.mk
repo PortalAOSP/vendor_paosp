@@ -1,2 +1,2 @@
-# Include XenonHD versions
-include $(TOPDIR)vendor/xenonhd/build/core/main_version.mk
+# Include PornAOSP versions
+include $(TOPDIR)vendor/paosp/build/core/main_version.mk

@@ -4,29 +4,29 @@ OTA_TYPE=Amateur
 endif
 
 # Make sure the uppercase is used
-ifeq ($(OTA_TYPE),experimental)
-OTA_TYPE=Experimental
+ifeq ($(OTA_TYPE),teen)
+OTA_TYPE=Teen
 endif
-ifeq ($(OTA_TYPE),official)
-OTA_TYPE=Official
+ifeq ($(OTA_TYPE),professional)
+OTA_TYPE=Professional
 endif
 
-# XenonHD version
-XENONHD_VERSION := pornypie-$(shell date +"%y%m%d")-$(OTA_TYPE)
-DEVICE := $(subst pornaosp_,,$(TARGET_PRODUCT))
+# PornAOSP version
+PAOSP_VERSION := PAOSP_creamPie-$(shell date +"%y%m%d")-$(OTA_TYPE)
+DEVICE := $(subst paosp_,,$(TARGET_PRODUCT))
 
-ifneq ($(OTA_TYPE),Unofficial)
-# XenonHD OTA app
+ifneq ($(OTA_TYPE),Amateur)
+# PAOSP OTA app
 PRODUCT_PACKAGES += \
-    XenonOTA
+    PornOTA
 
 # OTA Configuration
 $(shell echo -e "OTA_Configuration\n \
-ota_experimental=https://mirrors.c0urier.net/android/teamhorizon/P/OTA/ota_$(DEVICE)_experimental.xml\n \
-ota_official=https://mirrors.c0urier.net/android/teamhorizon/P/OTA/ota_$(DEVICE)_official.xml\n \
-device_name=ro.xenonhd.device\n \
+ota_teen=https://raw.githubusercontent.com/pornypie/OTAconfig/teen/ota_$(DEVICE)_teen.xml\n \
+ota_professional=https://raw.githubusercontent.com/pornypie/OTAconfig/teen/ota_$(DEVICE)_professional.xml\n \
+device_name=ro.paosp.device\n \
 release_type=Pie\n \
-version_source=ro.xenonhd.version\n \
+version_source=ro.paosp.version\n \
 version_delimiter=-\n \
 version_position=1\n \
 version_format=yyMMdd" > $(OTA_DIR)/ota_conf)
