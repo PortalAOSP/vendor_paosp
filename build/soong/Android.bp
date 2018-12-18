@@ -1,6 +1,6 @@
 bootstrap_go_package {
-    name: "soong-xenon",
-    pkgPath: "xenon/soong/android",
+    name: "soong-pornaosp",
+    pkgPath: "pornaosp/soong/android",
     srcs: [
         "android/config.go",
         "android/variable.go",
@@ -8,8 +8,8 @@ bootstrap_go_package {
 }
 
 bootstrap_go_package {
-    name: "soong-xenon-generator",
-    pkgPath: "xenon/soong/generator",
+    name: "soong-pornaosp-generator",
+    pkgPath: "pornaosp/soong/generator",
     deps: [
         "blueprint",
         "blueprint-pathtools",
@@ -24,7 +24,7 @@ bootstrap_go_package {
     pluginFor: ["soong_build"],
 }
 
-xenon_generator {
+pornaosp_generator {
     name: "generated_kernel_includes",
 
     // The headers make command

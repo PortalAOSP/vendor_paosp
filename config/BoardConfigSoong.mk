@@ -10,13 +10,13 @@ EXPORT_TO_SOONG := \
 # Documentation here:
 # https://github.com/LineageOS/android_build_soong/commit/8328367c44085b948c003116c0ed74a047237a69
 
-SOONG_CONFIG_NAMESPACES += xenonVarsPlugin
+SOONG_CONFIG_NAMESPACES += pornaospVarsPlugin
 
-SOONG_CONFIG_xenonVarsPlugin :=
+SOONG_CONFIG_pornaospVarsPlugin :=
 
 define addVar
-  SOONG_CONFIG_xenonVarsPlugin += $(1)
-  SOONG_CONFIG_xenonVarsPlugin_$(1) := $$(subst ",\",$$($1))
+  SOONG_CONFIG_pornaospVarsPlugin += $(1)
+  SOONG_CONFIG_pornaospVarsPlugin_$(1) := $$(subst ",\",$$($1))
 endef
 
 $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))

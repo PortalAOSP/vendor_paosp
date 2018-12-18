@@ -6,12 +6,12 @@ import (
 	"android/soong/android"
 )
 
-func xenonExpandVariables(ctx android.ModuleContext, in string) string {
-	xenonVars := ctx.Config().VendorConfig("xenonVarsPlugin")
+func pornaospExpandVariables(ctx android.ModuleContext, in string) string {
+	pornaospVars := ctx.Config().VendorConfig("pornaospVarsPlugin")
 
 	out, err := android.Expand(in, func(name string) (string, error) {
-		if xenonVars.IsSet(name) {
-			return xenonVars.String(name), nil
+		if pornaospVars.IsSet(name) {
+			return pornaospVars.String(name), nil
 		}
 		// This variable is not for us, restore what the original
 		// variable string will have looked like for an Expand
