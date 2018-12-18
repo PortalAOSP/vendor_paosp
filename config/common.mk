@@ -190,25 +190,7 @@ PRODUCT_PACKAGES += \
     Exchange2
 
 # Berry styles
-PRODUCT_PACKAGES += \
-    LineageBlackTheme \
-    LineageDarkTheme \
-    LineageAmberAccent \
-    LineageBlackAccent \
-    LineageBrownAccent \
-    LineageCyanAccent \
-    LineageDemonAccent \
-    LineageDenimAccent \
-    LineageGoldAccent \
-    LineageGreenAccent \
-    LineageGreyAccent \
-    LineageOrangeAccent \
-    LineageOxygenAccent \
-    LineagePinkAccent \
-    LineagePurpleAccent \
-    LineageTealAccent \
-    LineageTurquoiseAccent \
-    LineageYellowAccent
+include packages/overlays/PornAOSP/product_packages.mk
 
 # Extra tools in PornAOSP
 PRODUCT_PACKAGES += \
