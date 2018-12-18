@@ -1,3 +1,6 @@
+# Allow vendor/extra to override any property by setting it first
+$(call inherit-product-if-exists, vendor/extra/product.mk)
+
 PRODUCT_BRAND ?= XenonHD
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -18,6 +21,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.storage_manager.enabled=true \
     ro.com.google.ime.themes_dir=/system/etc/gboard_theme \
     ro.com.google.ime.theme_file=PornAosp.zip
+
+# Default alarm/notification/ringtone sounds
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.config.alarm_alert=Bright_morning.ogg \
+    ro.config.notification_sound=Popcorn.ogg \
+    ro.config.ringtone=The_big_adventure.ogg
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
@@ -98,9 +107,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/xenonhd/config/permissions/lineage-hiddenapi-package-whitelist.xml:system/etc/permissions/lineage-hiddenapi-package-whitelist.xml
 
-# Include XenonHD audio files
-include vendor/xenonhd/config/xenonhd_audio.mk
-
 # Include XenonOTA config
 include vendor/xenonhd/config/ota.mk
 
@@ -150,35 +156,23 @@ PRODUCT_PACKAGES += \
     LineageSetupWizard \
     Eleven \
     ExactCalculator \
-    Jelly \
     LockClock \
+    SoundPickerPrebuilt \
+    TrebuchetQuickStep \
     WallpaperPicker \
     WeatherProvider
+
+ifneq ($(DISABLE_AUDIOFX), true)
+PRODUCT_PACKAGES += \
+    AudioFX
+endif
 
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
 
 # Berry styles
-PRODUCT_PACKAGES += \
-    LineageBlackTheme \
-    LineageDarkTheme \
-    LineageAmberAccent \
-    LineageBlackAccent \
-    LineageBrownAccent \
-    LineageCyanAccent \
-    LineageDemonAccent \
-    LineageDenimAccent \
-    LineageGoldAccent \
-    LineageGreenAccent \
-    LineageGreyAccent \
-    LineageOrangeAccent \
-    LineageOxygenAccent \
-    LineagePinkAccent \
-    LineagePurpleAccent \
-    LineageTealAccent \
-    LineageTurquoiseAccent \
-    LineageYellowAccent
+include packages/overlays/XenonHD/product_packages.mk
 
 # Extra tools in XenonHD
 PRODUCT_PACKAGES += \
@@ -261,4 +255,5 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/xenonhd/config/partner_gms.mk
 
-$(call inherit-product-if-exists, vendor/extra/product.mk)
+# Use release-keys with Official builds if possible
+include vendor/xenonhd/config/release_keys.mk
