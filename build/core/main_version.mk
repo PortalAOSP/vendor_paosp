@@ -1,6 +1,6 @@
 # PornAOSP System Version
 ADDITIONAL_BUILD_PROPERTIES += \
-    ro.paosp.version=$(XENONHD_VERSION) \
+    ro.paosp.version=$(PAOSP_VERSION) \
     ro.paosp.type=$(OTA_TYPE) \
     ro.paosp.timestamp=$(shell date +%s)
 

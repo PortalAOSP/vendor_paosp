@@ -65,15 +65,15 @@ function setup_vendor() {
         exit 1
     fi
 
-    export XENONHD_ROOT="$3"
-    if [ ! -d "$XENONHD_ROOT" ]; then
-        echo "\$XENONHD_ROOT must be set and valid before including this script!"
+    export PAOSP_ROOT="$3"
+    if [ ! -d "$PAOSP_ROOT" ]; then
+        echo "\$PAOSP_ROOT must be set and valid before including this script!"
         exit 1
     fi
 
     export OUTDIR=vendor/"$VENDOR"/"$DEVICE"
-    if [ ! -d "$XENONHD_ROOT/$OUTDIR" ]; then
-        mkdir -p "$XENONHD_ROOT/$OUTDIR"
+    if [ ! -d "$PAOSP_ROOT/$OUTDIR" ]; then
+        mkdir -p "$PAOSP_ROOT/$OUTDIR"
     fi
 
     VNDNAME="$6"
@@ -81,9 +81,9 @@ function setup_vendor() {
         VNDNAME="$DEVICE"
     fi
 
-    export PRODUCTMK="$XENONHD_ROOT"/"$OUTDIR"/"$VNDNAME"-vendor.mk
-    export ANDROIDMK="$XENONHD_ROOT"/"$OUTDIR"/Android.mk
-    export BOARDMK="$XENONHD_ROOT"/"$OUTDIR"/BoardConfigVendor.mk
+    export PRODUCTMK="$PAOSP_ROOT"/"$OUTDIR"/"$VNDNAME"-vendor.mk
+    export ANDROIDMK="$PAOSP_ROOT"/"$OUTDIR"/Android.mk
+    export BOARDMK="$PAOSP_ROOT"/"$OUTDIR"/BoardConfigVendor.mk
 
     if [ "$4" == "true" ] || [ "$4" == "1" ]; then
         COMMON=1
@@ -771,7 +771,7 @@ function get_file() {
 # Convert apk|jar .odex in the corresposing classes.dex
 #
 function oat2dex() {
-    local XENONHD_TARGET="$1"
+    local PAOSP_TARGET="$1"
     local OEM_TARGET="$2"
     local SRC="$3"
     local TARGET=
@@ -779,8 +779,8 @@ function oat2dex() {
     local HOST="$(uname)"
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$XENONHD_ROOT"/vendor/paosp/build/tools/smali/baksmali.jar
-        export SMALIJAR="$XENONHD_ROOT"/vendor/paosp/build/tools/smali/smali.jar
+        export BAKSMALIJAR="$PAOSP_ROOT"/vendor/paosp/build/tools/smali/baksmali.jar
+        export SMALIJAR="$PAOSP_ROOT"/vendor/paosp/build/tools/smali/smali.jar
     fi
 
     if [ -z "$VDEXEXTRACTOR" ]; then
@@ -808,11 +808,11 @@ function oat2dex() {
         FULLY_DEODEXED=1 && return 0 # system is fully deodexed, return
     fi
 
-    if [ ! -f "$XENONHD_TARGET" ]; then
+    if [ ! -f "$PAOSP_TARGET" ]; then
         return;
     fi
 
-    if grep "classes.dex" "$XENONHD_TARGET" >/dev/null; then
+    if grep "classes.dex" "$PAOSP_TARGET" >/dev/null; then
         return 0 # target apk|jar is already odexed, return
     fi
 
@@ -836,7 +836,7 @@ function oat2dex() {
                 java -jar "$BAKSMALIJAR" deodex -o "$TMPDIR/dexout" -b "$BOOTOAT" -d "$TMPDIR" "$TMPDIR/$(basename "$OAT")"
                 java -jar "$SMALIJAR" assemble "$TMPDIR/dexout" -o "$TMPDIR/classes.dex"
             fi
-        elif [[ "$XENONHD_TARGET" =~ .jar$ ]]; then
+        elif [[ "$PAOSP_TARGET" =~ .jar$ ]]; then
             JAROAT="$TMPDIR/system/framework/$ARCH/boot-$(basename ${OEM_TARGET%.*}).oat"
             JARVDEX="/system/framework/boot-$(basename ${OEM_TARGET%.*}).vdex"
             if [ ! -f "$JAROAT" ]; then
@@ -937,7 +937,7 @@ function extract() {
     local HASHLIST=( ${PRODUCT_COPY_FILES_HASHES[@]} ${PRODUCT_PACKAGES_HASHES[@]} )
     local COUNT=${#FILELIST[@]}
     local SRC="$2"
-    local OUTPUT_ROOT="$XENONHD_ROOT"/"$OUTDIR"/proprietary
+    local OUTPUT_ROOT="$PAOSP_ROOT"/"$OUTDIR"/proprietary
     local OUTPUT_TMP="$TMPDIR"/"$OUTDIR"/proprietary
 
     if [ "$SRC" = "adb" ]; then
@@ -965,7 +965,7 @@ function extract() {
             # If OTA is block based, extract it.
             elif [ -a "$DUMPDIR"/system.new.dat ]; then
                 echo "Converting system.new.dat to system.img"
-                python "$XENONHD_ROOT"/vendor/paosp/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
+                python "$PAOSP_ROOT"/vendor/paosp/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
                 rm -rf "$DUMPDIR"/system.new.dat "$DUMPDIR"/system
                 mkdir "$DUMPDIR"/system "$DUMPDIR"/tmp
                 echo "Requesting sudo access to mount the system.img"
@@ -1117,7 +1117,7 @@ function extract_firmware() {
     local FILELIST=( ${PRODUCT_COPY_FILES_LIST[@]} )
     local COUNT=${#FILELIST[@]}
     local SRC="$2"
-    local OUTPUT_DIR="$XENONHD_ROOT"/"$OUTDIR"/radio
+    local OUTPUT_DIR="$PAOSP_ROOT"/"$OUTDIR"/radio
 
     if [ "$VENDOR_RADIO_STATE" -eq "0" ]; then
         echo "Cleaning firmware output directory ($OUTPUT_DIR).."

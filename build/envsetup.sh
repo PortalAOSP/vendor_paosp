@@ -68,7 +68,7 @@ function breakfast()
 {
     target=$1
     local variant=$2
-    XENONHD_DEVICES_ONLY="true"
+    PAOSP_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
     for f in `/bin/ls vendor/paosp/vendorsetup.sh 2> /dev/null`
@@ -117,7 +117,7 @@ function eat()
             done
             echo "Device Found.."
         fi
-        if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD"); then
+        if (adb shell getprop ro.paosp.device | grep -q "$PAOSP_BUILD"); then
             # if adbd isn't root we can't write to /cache/recovery/
             adb root
             sleep 1
@@ -133,7 +133,7 @@ EOF
             fi
             rm /tmp/command
         else
-            echo "The connected device does not appear to be $XENONHD_BUILD, run away!"
+            echo "The connected device does not appear to be $PAOSP_BUILD, run away!"
         fi
         return $?
     else
@@ -266,19 +266,19 @@ function paospremote()
     fi
     git remote rm paosp 2> /dev/null
     local REMOTE=$(git config --get remote.github.projectname)
-    local XENONHD="true"
+    local PAOSP="true"
     if [ -z "$REMOTE" ]
     then
         REMOTE=$(git config --get remote.aosp.projectname)
-        XENONHD="false"
+        PAOSP="false"
     fi
     if [ -z "$REMOTE" ]
     then
         REMOTE=$(git config --get remote.caf.projectname)
-        XENONHD="false"
+        PAOSP="false"
     fi
 
-    if [ $XENONHD = "false" ]
+    if [ $PAOSP = "false" ]
     then
         local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
         local PFX="TeamHorizon/"
@@ -286,12 +286,12 @@ function paospremote()
         local PROJECT=$REMOTE
     fi
 
-    local XENONHD_USER=$(git config --get review.gerrit.paosp.com.username)
-    if [ -z "$XENONHD_USER" ]
+    local PAOSP_USER=$(git config --get review.gerrit.paosp.com.username)
+    if [ -z "$PAOSP_USER" ]
     then
         git remote add paosp ssh://gerrit.paosp.com:29418/$PFX$PROJECT
     else
-        git remote add paosp ssh://$XENONHD_USER@gerrit.paosp.com:29418/$PFX$PROJECT
+        git remote add paosp ssh://$PAOSP_USER@gerrit.paosp.com:29418/$PFX$PROJECT
     fi
     echo "Remote 'paosp' created"
 }
@@ -395,7 +395,7 @@ function installboot()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 > /dev/null
     adb wait-for-online remount
-    if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD");
+    if (adb shell getprop ro.paosp.device | grep -q "$PAOSP_BUILD");
     then
         adb push $OUT/boot.img /cache/
         if [ -e "$OUT/system/lib/modules/*" ];
@@ -410,7 +410,7 @@ function installboot()
         adb shell rm -rf /cache/boot.img
         echo "Installation complete."
     else
-        echo "The connected device does not appear to be $XENONHD_BUILD, run away!"
+        echo "The connected device does not appear to be $PAOSP_BUILD, run away!"
     fi
 }
 
@@ -444,14 +444,14 @@ function installrecovery()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 >> /dev/null
     adb wait-for-online remount
-    if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD");
+    if (adb shell getprop ro.paosp.device | grep -q "$PAOSP_BUILD");
     then
         adb push $OUT/recovery.img /cache/
         adb shell dd if=/cache/recovery.img of=$PARTITION
         adb shell rm -rf /cache/recovery.img
         echo "Installation complete."
     else
-        echo "The connected device does not appear to be $XENONHD_BUILD, run away!"
+        echo "The connected device does not appear to be $PAOSP_BUILD, run away!"
     fi
 }
 
@@ -829,7 +829,7 @@ function dopush()
         echo "Device Found."
     fi
 
-    if (adb shell getprop ro.paosp.device | grep -q "$XENONHD_BUILD") || [ "$FORCE_PUSH" = "true" ];
+    if (adb shell getprop ro.paosp.device | grep -q "$PAOSP_BUILD") || [ "$FORCE_PUSH" = "true" ];
     then
     # retrieve IP and PORT info if we're using a TCP connection
     TCPIPPORT=$(adb devices \
@@ -947,7 +947,7 @@ EOF
     rm -f $OUT/.log
     return 0
     else
-        echo "The connected device does not appear to be $XENONHD_BUILD, run away!"
+        echo "The connected device does not appear to be $PAOSP_BUILD, run away!"
     fi
 }
 
@@ -966,7 +966,7 @@ function repopick() {
 function fixup_common_out_dir() {
     common_out_dir=$(get_build_var OUT_DIR)/target/common
     target_device=$(get_build_var TARGET_DEVICE)
-    if [ ! -z $XENONHD_FIXUP_COMMON_OUT ]; then
+    if [ ! -z $PAOSP_FIXUP_COMMON_OUT ]; then
         if [ -d ${common_out_dir} ] && [ ! -L ${common_out_dir} ]; then
             mv ${common_out_dir} ${common_out_dir}-${target_device}
             ln -s ${common_out_dir}-${target_device} ${common_out_dir}
